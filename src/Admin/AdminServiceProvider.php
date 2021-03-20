@@ -60,7 +60,6 @@ class AdminServiceProvider extends AbstractServiceProvider
                 HttpMiddleware\CheckCsrfToken::class,
                 Middleware\RequireAdministrateAbility::class,
                 HttpMiddleware\ReferrerPolicyHeader::class,
-                HttpMiddleware\XssProtectionHeader::class,
                 HttpMiddleware\ContentTypeOptionsHeader::class
             ];
         });
