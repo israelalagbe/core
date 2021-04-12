@@ -11,8 +11,7 @@ namespace Flarum\Tests\integration\middleware;
 
 use Flarum\Testing\integration\TestCase;
 
-class ReferrerPolicyTest extends TestCase
-{
+class ReferrerPolicyTest extends TestCase {
     /**
      * @test
      */
