@@ -22,7 +22,7 @@ class ReferrerPolicyHeader implements Middleware
 
     public function __construct(Config $config)
     {
-        $this->policy = $config['headers']['referrerPolicy'] ?? 'same-origin';
+        $this->policy = Arr::get($config, 'headers.referrerPolicy') ?? 'same-origin';
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
