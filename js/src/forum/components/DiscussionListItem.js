@@ -64,7 +64,7 @@ export default class DiscussionListItem extends Component {
     const isRead = discussion.isRead();
     const showUnread = !this.showRepliesCount() && isUnread;
     let jumpTo = 0;
-    const controls = DiscussionControls.controls(discussion, this).toArray();
+    let controls = DiscussionControls.controls(discussion, this).toArray();
     const attrs = this.elementAttrs();
 
     if (this.attrs.params.q) {
@@ -78,6 +78,17 @@ export default class DiscussionListItem extends Component {
     } else {
       jumpTo = Math.min(discussion.lastPostNumber(), (discussion.lastReadPostNumber() || 0) + 1);
     }
+
+    const canEditArticle = user?.id?.()
+      ? user?.id?.() === app.session.user?.id?.()
+      : app.session?.user?.canEdit?.() ?? false;
+
+    controls = controls.filter((control) => {
+      if(!canEditArticle) {
+        return control.itemName !== 'rename';
+      }
+      return true;
+    });
 
     return (
       <div {...attrs}>

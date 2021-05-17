@@ -104,7 +104,6 @@ class ListUsersController extends AbstractListController
             $limit,
             $results->areMoreResults() ? null : 0
         );
-
         return $results->getResults()->load($include);
     }
 }
