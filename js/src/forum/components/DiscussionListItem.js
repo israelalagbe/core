@@ -79,12 +79,10 @@ export default class DiscussionListItem extends Component {
       jumpTo = Math.min(discussion.lastPostNumber(), (discussion.lastReadPostNumber() || 0) + 1);
     }
 
-    const canEditArticle = user?.id?.()
-      ? user?.id?.() === app.session.user?.id?.()
-      : app.session?.user?.canEdit?.() ?? false;
+    const canEditArticle = user?.id?.() ? user?.id?.() === app.session.user?.id?.() : app.session?.user?.canEdit?.() ?? false;
 
     controls = controls.filter((control) => {
-      if(!canEditArticle) {
+      if (!canEditArticle) {
         return control.itemName !== 'rename';
       }
       return true;
